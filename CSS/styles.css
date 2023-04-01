@@ -1,0 +1,44 @@
+body{
+    background-color: #E4E4E4;
+}
+.topbg{
+    position:fixed absolute;
+    background-color: white;
+}
+h1{
+    color: orange;
+    font-family: 'Sacramento',cursive;
+    font-size: 50px;
+    display: inline;
+}
+h2{
+    font-family: 'Merriweather',sans-serif;
+}
+
+.login{
+    display:inline;
+    position:absolute;
+    right:30%;
+
+}
+.img1{
+    position:absolute;
+    width:500px;
+    top:30%;
+    left:2.5%;
+}
+.para1{
+    font-size:x-large;
+    font-family: 'Merriweather', sans-serif;
+    width:550px;
+    position:absolute;
+    top:30%;
+    right:5%;
+
+
+}
+.About{
+    display:inline;
+    position:absolute;
+    right:10%;
+}
