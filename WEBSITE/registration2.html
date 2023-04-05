@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Attendance Settings</title>
+    <!--favicon-->
+    <link rel="icon" href="./LAB_3/favicon (1).ico">
+
+
+
+    <!--BOOTSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Sacramento&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg-dark bg-dark navbar-custom" data-bs-theme="dark">
+        <a class="navbar-brand mb-0 h1"><img src="./../../photos/discipline.png" alt="Ontime.img" width="70" height="70">Ontime.com</a>
+        <ul class="nav justify-content-end">
+        <li class="nav-item" >
+            <a class="nav-link bg-light" href="./admin.html" style="margin:5px;color:black">Organisation Info</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link bg-light" href="" style="margin:5px;color: black;">Attendance Settings</a>
+        </li>
+    </ul>
+    </nav>
+    <h1 class="display-5">Member Database</h1>
+    <p class="display-10">Upload Database having attendance record of the current day.</p>
+    <form>
+        <div class="form-group">
+          <input type="file" class="form-control-file" id="exampleFormControlFile1">
+        </div>
+      </form>
+      <br>
+    <h3 class="display-5">Working Days</h3>
+    <p class="display-10">Select normal working days for members of your organization</p>
+    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+        <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+        <label class="btn btn-outline-success" for="btncheck1">Sunday</label>
+        <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+        <label class="btn btn-outline-success" for="btncheck2">Monday</label>
+        <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+        <label class="btn btn-outline-success" for="btncheck3">Tuesday</label>
+        <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
+        <label class="btn btn-outline-success" for="btncheck4">Wednesday</label>
+        <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
+        <label class="btn btn-outline-success" for="btncheck5">Thursday</label>
+      
+        <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off">
+        <label class="btn btn-outline-success" for="btncheck6">Friday</label>
+      
+        <input type="checkbox" class="btn-check" id="btncheck7" autocomplete="off">
+        <label class="btn btn-outline-success" for="btncheck7">Saturday</label>
+      </div>
+    <h3 class="display-5">Image Upload</h3>
+    <p class="display-10">Select image detection records which are to be maintained along with other data of a member.</p>
+    <div type="button" class="btn btn-outline-danger">Face Detection</div>
+    <div type="button" class="btn btn-outline-success">Face Mask Detection</div>
+    <br>
+    <br>
+    <div type="button" class="btn btn-secondary">Submit</div>
+
+
+
+
+
+
+    
+</body>
+</html>
