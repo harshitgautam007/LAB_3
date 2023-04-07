@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Camera Access Example</title>
+  </head>
+  <body>
+    <h1>Camera Access Example</h1>
+    <button onclick="openCamera()">Open Camera</button>
+    <button onclick="takePhoto()">Take Photo</button>
+    <canvas id="canvas" width="640" height="480" style="display: none;"></canvas>
+    <video id="video" width="640" height="480"></video>
+
+    <script>
+      const video = document.getElementById("video");
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+
+      function openCamera() {
+        navigator.mediaDevices.getUserMedia({ video: true })
+          .then(stream => {
+            video.srcObject = stream;
+            video.play();
+          })
+          .catch(err => console.error("Error: " + err));
+      }
+
+      function takePhoto() {
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        const dataURL = canvas.toDataURL();
+        const link = document.createElement("a");
+        link.download = "photo.png";
+        link.href = dataURL;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
+      video.addEventListener("play", () => {
+        const intervalID = setInterval(() => {
+          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        }, 16);
+      });
+    </script>
+  </body>
+</html>
