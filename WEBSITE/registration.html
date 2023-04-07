@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <title>Organisation Registration</title>
+    <link rel="stylesheet" href="./CSS/organi_reg.css">
     <!--favicon-->
     <link rel="icon" href="./LAB_3/favicon (1).ico">
 
@@ -16,57 +17,61 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Sacramento&display=swap" rel="stylesheet">
 
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg-dark bg-dark navbar-custom" data-bs-theme="dark">
+<body style="background-image: url(../photos/bg1.jpg);background-size: cover;">
+    <nav class="navbar navbar-expand-lg-dark navbar-custom" data-bs-theme="dark">
         <a class="navbar-brand mb-0 h1"><img src="./../../photos/discipline.png" alt="Ontime.img" width="70" height="70">Ontime.com</a>
         <ul class="nav justify-content-end">
         <li class="nav-item" >
-            <a class="nav-link bg-light" href="./admin.html" style="margin:5px;color:black">Organisation Info</a>
+            <a class="nav-link " href="./admin.html" style="margin:5px;color:white;background-color:#3a6b7c;">Organisation Info</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link bg-light" href="" style="margin:5px;color: black;">Attendance Settings</a>
+            <a class="nav-link bg-light" href="" style="margin:5px;color: black;background-color:black;">Attendance Settings</a>
         </li>
     </ul>
     </nav>
-    <form>
-      <div style="margin-left: 40px;margin-top: 10px;">
+      <div style= "margin-left: 10px;">
+        <form style="color:white">
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputEmail4">Organisation ID</label>
-            <input type="text" class="form-control" id="inputEmail4" style="width:40%" placeholder="Email">
+            <input type="text" class="form-control " id="inputEmail4" style="width:40%;background:transparent" placeholder="Organisation Id">
           </div>
           <div class="form-group col-md-6">
             <label for="inputPassword4">Password</label>
-            <input type="password" class="form-control" id="inputPassword4" style="width:40%" placeholder="Password">
+            <input type="password" class="form-control" id="inputPassword4" style="width:40%;background:transparent" placeholder="Password">
           </div>
           <div class="form-group col-md-6">
             <label for="inputEmail4">Admin Name</label>
-            <input type="text" class="form-control" id="inputEmail4" style="width:40%" placeholder="Email">
+            <input type="text" class="form-control " id="inputEmail4" style="width:40%;background:transparent" placeholder="Name">
           </div>
           <div class="form-group col-md-6">
             <label for="inputPassword4">Confirm Password</label>
-            <input type="password" class="form-control" style="width:40%" id="inputPassword4" placeholder="Password">
+            <input type="password" class="form-control" style="width:40%;background:transparent" id="inputPassword4" placeholder="Password">
           </div>
         </div>
         <div class="form-group">
           <label for="inputAddress">Address</label>
-          <input type="text" class="form-control" id="inputAddress" style="width:30%;height:100px" placeholder="Enter your Address">
+          <input type="text" class="form-control " id="inputAddress" style="width:30%;height:100px;background:transparent" placeholder="Enter your Address" style="background:transparent">
         </div>
         <div class="form-group col-md-6">
             <label for="inputEmail4">Email</label>
-            <input type="email" class="form-control" style="width:40%" id="inputEmail4" placeholder="Email">
+            <input type="email" class="form-control " style="width:40%;background:transparent" id="inputEmail4" placeholder="Email">
           </div>
         
         <div class="form-row">
           <div class="form-group col-md-2">
             <label for="inputZip">Phone No.</label>
-            <input type="text" class="form-control" id="inputZip">
+            <input type="text"class="form-control " id="inputZip" style="background:transparent">
           </div>
         </div>
         <br>
-        <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn" style="background-color:#488395;color: white;">Submit</button>
+        
       </form>
       </div>
+      
+      
+      
         
     
 </body>
