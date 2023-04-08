@@ -1,0 +1,656 @@
+openapi: 3.0.0
+info:
+  title: OnTime Attendance Tracking API
+  description: "API documentation for OnTime attendance tracking software.This API\
+    \ documentation highlights the various requests we would implement using the rest\
+    \ API . They are generally shown through put, get and post requests. The attendance\
+    \ tracking in general requires database changes on a major amount and hence need\
+    \ to be handled well and hence we tested our API documentation using swagger."
+  version: 1.0.0
+servers:
+- url: http://ontime.com/api
+paths:
+  /member_login:
+    post:
+      tags:
+      - Login
+      summary: Login for a member of an organization
+      description: Login Option for members
+      operationId: member_login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/member_login_body'
+      responses:
+        "200":
+          description: successful member login
+        "400":
+          description: Invalid Login
+      x-openapi-router-controller: swagger_server.controllers.login_controller
+  /register/org_info:
+    post:
+      tags:
+      - Organization Registration
+      summary: Register a new organization
+      operationId: get_org_info
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/register_org_info_body'
+      responses:
+        "200":
+          description: The requested action was successful.
+        "400":
+          description: The passwords do not match.
+        "409":
+          description: Organisation already registered
+      x-openapi-router-controller: swagger_server.controllers.organization_registration_controller
+  /register/{organization_id}/mem_info:
+    post:
+      tags:
+      - Organization Registration
+      summary: Upload Database of Employees in a file.
+      description: "Endpoint for uploading a database file containing details of the\
+        \ employee such as its Employee id,Name,Email ID."
+      operationId: post_mem_info
+      parameters:
+      - name: organization_id
+        in: path
+        description: organization whose members are updated
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/database'
+      responses:
+        "201":
+          description: Database file uploaded successfully
+        "404":
+          description: Not found
+        "403":
+          description: Access Denied
+      x-openapi-router-controller: swagger_server.controllers.organization_registration_controller
+  /register/settings:
+    post:
+      tags:
+      - Organization Registration
+      summary: Select Settings for attendance management.
+      description: Select the different days which are working days for your organization
+        and any ML API you wanted
+      operationId: post_settings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/settings'
+        required: true
+      responses:
+        "200":
+          description: Succesful Response
+        "404":
+          description: No Response found
+      x-openapi-router-controller: swagger_server.controllers.organization_registration_controller
+  /admin_login:
+    post:
+      tags:
+      - Login
+      summary: Login for admin of an organization
+      description: This is for login of a whole organization which has only one admin
+        per one organization.
+      operationId: admin_login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/admin_login_body'
+      responses:
+        "200":
+          description: Successful response
+        "400":
+          description: Invalid username/password supplied
+      x-openapi-router-controller: swagger_server.controllers.login_controller
+  /org/{organization_id}/{member_id}/info:
+    get:
+      tags:
+      - Organization
+      summary: List the information of the member from the database
+      description: The following information from the database is taken and shown
+        on the individual member page.
+      operationId: member_info
+      parameters:
+      - name: member_id
+        in: path
+        description: The ID of the member to retrieve information for
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: NMember87
+      - name: organization_id
+        in: path
+        description: The ID of the member to retrieve information for
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Company_XYZ
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member Information'
+        "404":
+          description: Not found response
+      x-openapi-router-controller: swagger_server.controllers.organization_controller
+  /org/{organization_id}/{member_id}/attendance:
+    put:
+      tags:
+      - Organization
+      summary: uploads an image
+      description: The time and date of the image are also noted.
+      operationId: uploadimage
+      parameters:
+      - name: member_id
+        in: path
+        description: ID of pet to update
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: organization_id
+        in: path
+        description: The ID of the member to retrieve information for
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Company_XYZ
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        "200":
+          description: successful operation
+      x-openapi-router-controller: swagger_server.controllers.organization_controller
+  /org/{organization_id}/{member_id}/leaves:
+    get:
+      tags:
+      - Organization
+      summary: Retrieve a list of leaves marked for a member by the organization.
+      operationId: show_leaves
+      parameters:
+      - name: organization_id
+        in: path
+        description: ID of the organization to retrieve holidays for.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: member_id
+        in: path
+        description: ID of member
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: List of holidays marked by the organization.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/leaves'
+      x-openapi-router-controller: swagger_server.controllers.organization_controller
+    put:
+      tags:
+      - Organization
+      summary: Update the list of leaves of a member marked by the organization.
+      operationId: update_leaves
+      parameters:
+      - name: organization_id
+        in: path
+        description: ID of the organization.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: member_id
+        in: path
+        description: ID of member.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: List of leaves to update.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/leaves'
+        required: true
+      responses:
+        "204":
+          description: Leaves successfully updated.
+        "400":
+          description: Invalid request body.
+        "404":
+          description: Organization not found.
+      x-openapi-router-controller: swagger_server.controllers.organization_controller
+  /org/{organization_id}/member_list:
+    get:
+      tags:
+      - Organization
+      summary: Get list of people for an organization
+      description: Returns a list of members who belong to a specific organization.
+      operationId: display_member_list
+      parameters:
+      - name: organization_id
+        in: path
+        description: The ID of the organization to get people for
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: CompanyXYZ
+      - name: name
+        in: query
+        description: Optional partial name to filter the list of people by
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: J
+      responses:
+        "200":
+          description: A list of members
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                x-content-type: application/json
+              example:
+              - John Doe
+              - Jason
+      x-openapi-router-controller: swagger_server.controllers.organization_controller
+  /org/{organization_id}/overview:
+    get:
+      tags:
+      - Organization
+      summary: List the information of the member from the database
+      description: The following information from the database is taken and shown
+        on the individual member page.
+      operationId: organization_details
+      parameters:
+      - name: organization_id
+        in: path
+        description: The ID of the organization to retrieve information for
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: CompanyXYZ
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization Information'
+        "404":
+          description: Not found response
+      x-openapi-router-controller: swagger_server.controllers.organization_controller
+  /org/{organization_id}/update_mem:
+    put:
+      tags:
+      - Organization
+      summary: Upload Database of Employees in a file which is the updated information
+        pertaining to them.
+      description: "Endpoint for uploading a database file containing details of the\
+        \ employee such as its Employee id,Name,Email ID."
+      operationId: update_mem_info
+      parameters:
+      - name: organization_id
+        in: path
+        description: organization whose members are updated
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/database'
+        required: true
+      responses:
+        "200":
+          description: Database file Uploaded Successfully
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+      x-openapi-router-controller: swagger_server.controllers.organization_controller
+  /org/{organization_id}/settings:
+    get:
+      tags:
+      - Organization
+      summary: show Settings for attendance management.
+      description: select the different days which are working days for your organization
+        and any ML API you wanted
+      operationId: show_settings
+      parameters:
+      - name: organization_id
+        in: path
+        description: organization whose settings are updated
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/settings'
+        "400":
+          description: Bad Request
+      x-openapi-router-controller: swagger_server.controllers.organization_controller
+    put:
+      tags:
+      - Organization
+      summary: Select Settings for attendance management.
+      description: Select the different days which are working days for your organization
+        and any ML API you wanted
+      operationId: update_settings
+      parameters:
+      - name: organization_id
+        in: path
+        description: organization whose settings are updated
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/settings'
+        required: true
+      responses:
+        "200":
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/settings'
+        "400":
+          description: Bad Request
+      x-openapi-router-controller: swagger_server.controllers.organization_controller
+  /org/{organization_id}/holidays:
+    get:
+      tags:
+      - Organization
+      summary: Retrieve a list of holidays marked by the organization.
+      operationId: show_holidays
+      parameters:
+      - name: organization_id
+        in: path
+        description: ID of the organization to retrieve holidays for.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: List of holidays marked by the organization.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/holidays'
+      x-openapi-router-controller: swagger_server.controllers.organization_controller
+    put:
+      tags:
+      - Organization
+      summary: Update the list of holidays marked by the organization.
+      operationId: update_holidays
+      parameters:
+      - name: organization_id
+        in: path
+        description: ID of the organization to update holidays for.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: List of holidays to update.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/holidays'
+        required: true
+      responses:
+        "204":
+          description: Holidays successfully updated.
+        "400":
+          description: Invalid request body.
+        "404":
+          description: Organization not found.
+      x-openapi-router-controller: swagger_server.controllers.organization_controller
+components:
+  schemas:
+    database:
+      required:
+      - Database File
+      type: object
+      properties:
+        Database File:
+          maxLength: 10485760
+          type: string
+          description: The database file containing employee details.
+          format: binary
+    settings:
+      type: object
+      properties:
+        workingDays:
+          type: array
+          example:
+          - monday
+          - tuesday
+          - wednesday
+          - thursday
+          - friday
+          items:
+            type: string
+            enum:
+            - monday
+            - tuesday
+            - wednesday
+            - thursday
+            - friday
+            - saturday
+            - sunday
+        Face Detection:
+          type: boolean
+          example: true
+        Face Mask Detection:
+          type: boolean
+          example: false
+      example:
+        Face Detection: true
+        workingDays:
+        - monday
+        - tuesday
+        - wednesday
+        - thursday
+        - friday
+        Face Mask Detection: false
+    holidays:
+      type: array
+      items:
+        type: string
+        format: date
+    leaves:
+      type: array
+      properties:
+        date:
+          type: string
+          description: The date of the leave to update.
+          format: date
+        approved:
+          type: boolean
+          description: Whether the leave is approved or not.
+      example:
+      - date: 2023-07-04
+        approved: false
+      - date: 2023-12-25
+        approved: true
+      items:
+        type: object
+    member_login_body:
+      required:
+      - member_id
+      - organization_id
+      - password
+      type: object
+      properties:
+        organization_id:
+          type: string
+          example: CompanyXYZ
+        member_id:
+          type: string
+          example: NMember87
+        password:
+          type: string
+          format: password
+          example: PussInBoots69
+    register_org_info_body:
+      required:
+      - Address
+      - Admin Name
+      - Confirm Password
+      - Email ID
+      - Organization ID
+      - Password
+      - Phone Number
+      type: object
+      properties:
+        Organization ID:
+          type: string
+          description: The ID of the new organization being registered
+        Admin Name:
+          type: string
+          description: The name of the admin for the new organization being registered
+        Email ID:
+          type: string
+          description: The email address of the admin for the new organization being
+            registered
+          format: email
+        Phone Number:
+          type: string
+          description: The phone number of the admin for the new organization being
+            registered
+        Password:
+          minLength: 8
+          type: string
+          description: The password for the new organization being registered
+        Confirm Password:
+          minLength: 8
+          type: string
+          description: Confirming password for the new organization being registered
+        Address:
+          type: string
+          description: Address of the Office of the new organization being registered
+    admin_login_body:
+      required:
+      - organization_id
+      - password
+      type: object
+      properties:
+        organization_id:
+          type: string
+          example: CompanyXYZ
+        password:
+          type: string
+          format: password
+          example: PussInBoots69
+    Member Information:
+      title: Member Information
+      type: object
+      properties:
+        member_id:
+          type: string
+          description: The ID of the member
+        member_name:
+          type: string
+          description: The name of the member
+          example: Bumble More
+        organization_id:
+          type: string
+          description: "The ID of the Organization, the member belongs to."
+          example: CompanyXYZ
+        email:
+          type: string
+          description: The email of the member
+          example: bumblebore54@gmail.com
+      example:
+        member_id: NMember87
+        organization_id: CompanyXYZ
+        member_name: Bumble More
+        email: bumblebore54@gmail.com
+    Organization Information:
+      title: Organization Information
+      type: object
+      properties:
+        member_name:
+          type: string
+          description: The name of the Admin
+          example: Bumble More
+        organization_id:
+          type: string
+          description: "The ID of the Organization, the member belongs to."
+          example: CompanyXYZ
+        email:
+          type: string
+          description: The email of the Admin
+          example: bumblebore54@gmail.com
+        phone_number:
+          type: integer
+          description: The phone number of the admin
+          example: 9971185984
+      example:
+        organization_id: CompanyXYZ
+        phone_number: 9971185984
+        admin_name: Bumble More
+        email: bumblebore54@gmail.com
+
