@@ -23,10 +23,10 @@
         <a class="navbar-brand mb-0 h1"><img src="./../photos/discipline.png" alt="Ontime.img" width="70" height="70">Ontime.com</a>
         <ul class="nav justify-content-end">
         <li class="nav-item" >
-            <a class="nav-link" href="./admin.html" style="margin:5px;color:whitesmoke;background-color: grey;">Organisation Info</a>
+            <a class="nav-link" href="#" style="margin:5px;color:whitesmoke;background-color: grey;">Organisation Info</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="" style="margin:5px;color:whitesmoke;background-color: grey;">Attendance Settings</a>
+            <a class="nav-link" href="#" style="margin:5px;color:whitesmoke;background-color: grey;">Attendance Settings</a>
         </li>
     </ul>
     </nav>
@@ -64,7 +64,10 @@
     <div type="button" class="btn btn-outline-secondary">Face Mask Detection</div>
     <br>
     <br>
-    <div type="button" class="btn btn-secondary">Submit</div>
+    <div type="button" class="btn btn-secondary" onclick="redirectToNewPage3()">Submit</div>
+    <script>function redirectToNewPage3() {
+      window.location.href = "./admin.html"
+      alert("Registration Successful")}</script>
 
 
 
