@@ -20,7 +20,7 @@
 <body style="background-image: url(../photos/leone-venter-VieM9BdZKFo-unsplash.jpg);background-size: cover;">
     <nav class="navbar navbar-expand-lg-dark " data-bs-theme="dark">
         <a class="navbar-brand mb-0 h1" style="color: black;"><img src="./../photos/discipline.png" alt="Ontime.img" width="70" height="70" >Ontime.com</a>
-        <ul class="nav justify-content-end">
+        <ul class="nav justify-content-center">
         <li class="nav-item" >
             <a class="nav-link " href="./admin.html" style="margin:5px;color:white;background-color:#3a6b7c;">Organisation Info</a>
         </li>
@@ -29,46 +29,57 @@
         </li>
     </ul>
     </nav>
-      <div style= "margin-left: 300px;">
-        <form style="color:black">
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="inputEmail4">Organisation ID</label>
-            <input type="text" class="form-control " id="inputEmail4" style="width:40%;background:transparent" placeholder="Organisation Id">
+    <div class="row">
+      <div class="col-lg-4">
+        <form style="color:black;margin-left: 40px;">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Organisation ID</label>
+              <input type="text" class="form-control " id="inputEmail4" style="width:80%;background:transparent;" placeholder="Organisation Id">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Password</label>
+              <input type="password" class="form-control" id="inputPassword4" style="width:60%;background:transparent" placeholder="Password">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Admin Name</label>
+              <input type="text" class="form-control " id="inputEmail4" style="width:60%;background:transparent" placeholder="Name">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Confirm Password</label>
+              <input type="password" class="form-control" style="width:60%;background:transparent" id="inputPassword4" placeholder="Password">
+            </div>
           </div>
-          <div class="form-group col-md-6">
-            <label for="inputPassword4">Password</label>
-            <input type="password" class="form-control" id="inputPassword4" style="width:40%;background:transparent" placeholder="Password">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputEmail4">Admin Name</label>
-            <input type="text" class="form-control " id="inputEmail4" style="width:40%;background:transparent" placeholder="Name">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputPassword4">Confirm Password</label>
-            <input type="password" class="form-control" style="width:40%;background:transparent" id="inputPassword4" placeholder="Password">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="inputAddress">Address</label>
-          <input type="text" class="form-control " id="inputAddress" style="width:30%;height:100px;background:transparent" placeholder="Enter your Address" style="background:transparent">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="inputEmail4">Email</label>
-            <input type="email" class="form-control " style="width:40%;background:transparent" id="inputEmail4" placeholder="Email">
-          </div>
-        
-        <div class="form-row">
-          <div class="form-group col-md-2">
-            <label for="inputZip">Phone No.</label>
-            <input type="text"class="form-control " id="inputZip" style="background:transparent">
-          </div>
-        </div>
-        <br>
-      <button type="submit" class="btn" style="background-color:#488395;color: white;">Submit</button>
-        
-      </form>
+        </form>
       </div>
+      <div class="col-lg-4">
+        <form>
+          <div class="form-group">
+            <label for="inputAddress">Address</label>
+            <input type="text" class="form-control " id="inputAddress" style="width:50%;height:100px;background:transparent" placeholder="Enter your Address" style="background:transparent">
+          </div>
+          <div class="form-group col-md-6">
+              <label for="inputEmail4">Email</label>
+              <input type="email" class="form-control " style="width:70%;background:transparent" id="inputEmail4" placeholder="Email">
+            </div>
+          
+          <div class="form-row">
+            <div class="form-group col-md-2">
+              <label for="inputZip" style="width:100px">Phone No.</label>
+              <input type="text"class="form-control " id="inputZip" style="background:transparent;width:150px">
+            </div>
+          </div>
+        </div>
+      </form>
+
+      </div>
+    </div>
+      
+      </div>
+    <br>
+    <br>
+    <button type="submit" class="btn" style="background-color:#488395;color: white;width:100px;margin-left:250px">Submit</button>
+
       
       
       
