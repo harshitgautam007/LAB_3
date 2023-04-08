@@ -26,7 +26,7 @@
             <a class="nav-link bg-light" href="" style="margin:5px;color: black;">Attendance Settings</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link bg-light" href="" style="margin:5px;color: black;">LogOut</a>
+            <a class="nav-link bg-light" href="./login.html" style="margin:5px;color: black;">LogOut</a>
         </li>
     </ul>
     </nav>
@@ -85,7 +85,10 @@
             
         </div>
     </div>
-    <div type="button" class="btn btn-outline-secondary" style="margin-left: 5px;">Save Changes</div>
+    <div type="button" class="btn btn-outline-secondary" onclick="redirectToNewPage7()" style="margin-left: 5px;">Save Changes</div>
+    <script>function redirectToNewPage7() {
+        window.location.href = "./login.html"
+        alert("Changes Saved")}</script>
 
     
     
