@@ -1,0 +1,4 @@
+member id,member_name,email_id,password,phone_no,working_hours
+Member1,John Doe, johndoe@example.com,Password1,1234567890,08:00:00
+Member2,Jane Doe,janedoe@example.com,Password2,987654321,08:00:00
+Member3,Bob Smith,bobsmith@example.com,Password3,5551234567,08:00:00

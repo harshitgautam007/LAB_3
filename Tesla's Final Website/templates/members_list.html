@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Organisation Overview</title>
+    <!--favicon-->
+    <link rel="icon" href="./LAB_3/favicon (1).ico">
+    <!--BOOTSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Sacramento&display=swap" rel="stylesheet">
+
+</head>
+<body style="background-image: url(/static/photos/dose-media-bU6JyhSI6zo-unsplash.jpg);background-size:cover;background-position-y: -240px;background-position-x: 0px;">
+    <nav class="navbar navbar-expand-lg-dark     navbar-custom" data-bs-theme="dark">
+        <a class="navbar-brand mb-0 h1"><img src="/static/photos/discipline.png" alt="Ontime.img" width="70" height="70" style="border: radius 5px;;">Ontime.com</a>
+        <ul class="nav justify-content-end">
+        <li class="nav-item" >
+            <a class="nav-link bg-light" href="/logout" style="margin:5px;color:black">LogOut</a>
+        </li>
+    </ul>
+    </nav>
+    <form method="get" action="/mem_ov">
+        <input type="text" name="search_query" value="{{ search_query }}" style="margin-left:50px">
+        <button type="submit">Search</button>
+    </form>
+    {% for button in buttons %}
+        <a href="/member/{{ button['id'] }}"><button style="width:180px;height:30px;margin-left:50px;border-radius: 5px;margin-top: 5px;margin-bottom: 5px;">{{ button['member_name'] }}</button></a>
+        <br>
+    {% endfor %}
+
+</body>
+</html>

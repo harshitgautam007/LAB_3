@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>About Us</title>
+    <!--favicon-->
+    <link rel="icon" href="./LAB_3/favicon (1).ico">
+
+
+    <!--BOOTSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Sacramento&display=swap" rel="stylesheet">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: teal;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 36px;
+
+        }
+
+        h3{
+            color:#388087
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        p {
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="display-5">About Us</h1>
+    </header>
+    <main>
+        <h1 class="section-title">Who We Are</h1>
+        <div class="team-container">
+            <div class="team-member">
+                <img src="/static/photos/abhinav-modified.png" alt="Team member 1">
+                <h3>Abhinav Singh</h3>
+                <p style="color:#6fb3b8">Lead Designer</p>
+            </div>
+            <div class="team-member">
+                <img src="/static/photos/harshit.png" alt="Team member 2">
+                <h3>Harshit Gautam</h3>
+                <p style="color:#6fb3b8">Front-end Developer</p>
+            </div>
+            <div class="team-member">
+                <img src="/static/photos/bhupesh.png" alt="Team member 3">
+                <h3>Bhupesh </h3>
+                <p style="color:#6fb3b8">Back-end Developer</p>
+            </div>
+        </div>
+        <style>
+            body{
+                margin:0px;
+                padding: 0px;
+                border: 0px;
+                background-color: #F6F6F2;
+            }
+            .team-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                background-color: #f5f5f5;
+                padding: 50px 0;
+            }
+
+            .team-member {
+                width: 300px;
+                margin: 20px;
+                padding: 20px;
+                background-color: #fff;
+                border-radius: 10px;
+                text-align: center;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            .team-member img {
+                width: 200px;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 50%;
+                margin-bottom: 20px;
+                box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+            }
+
+            .team-member h3 {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+
+            .team-member p {
+                font-size: 20px;
+                color: #666;
+            }
+
+            .section-title {
+                font-family: 'Pacifico', cursive;
+                font-size: 48px;
+                text-align: center;
+                margin-top: 50px;
+                color: #6fb3b8;
+                text-transform: uppercase;
+                animation: bounce 1s infinite;
+                -webkit-animation: bounce 1s infinite;
+            }
+
+            @keyframes bounce {
+                0% {
+                    transform: translateY(0);
+                }
+
+                50% {
+                    transform: translateY(-20px);
+                }
+
+                100% {
+                    transform: translateY(0);
+                }
+            }
+
+            @-webkit-keyframes bounce {
+                0% {
+                    transform: translateY(0);
+                }
+
+                50% {
+                    transform: translateY(-20px);
+                }
+
+                100% {
+                    transform: translateY(0);
+                }
+            }
+
+            .section-title::after {
+                content: "!";
+                font-family: 'Indie Flower', cursive;
+                font-size: 40px;
+                color: #2d338245;
+                position: relative;
+                top: -3px;
+                left: 10px;
+            }
+            .wrap {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  width: 140px;
+  height: 45px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  margin-left: -1100px;
+  }
+
+.button:hover {
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+        </style>
+
+
+
+
+
+        <p class="display-10" style="color: #388087;">We are a team of Three contributing in this Project with an Aim to learn and master the concepts of Website
+            Designing.
+
+        
+        
+        
+    </main>
+    
+    <div style="color:white; background-color:#388087;margin:none;width:100%;padding-bottom:0px;position: absolute  ;">
+        <div class="wrap" style="padding-top: 3px;">
+            <button class="button">CONTACT US</button>
+          </div>
+          <div style="margin-left: 50px; font-size: smaller;"><p class="display-10">If you have any questions or comments, please don't hesitate to contact us. You can reach us by email through
+            our website.</p>
+        <ul>
+    
+            <li>Email: Ontime@companyname.com</li>
+            <li>Website: <a href="https://www.companyname.com/" style="color:#C2EDCE">www.companyname.com</a></li>
+        </ul></div>
+        
+
+    </div>
+</body>
+
+</html>

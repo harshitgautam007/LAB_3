@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Organisation Overview</title>
+    <!--favicon-->
+    <link rel="icon" href="./LAB_3/favicon (1).ico">
+    <!--BOOTSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Sacramento&display=swap" rel="stylesheet">
+
+</head>
+<body style="background-image: url(/static/photos/dose-media-bU6JyhSI6zo-unsplash.jpg);background-size:cover;background-position-y: -240px;background-position-x: 0px;">
+    <nav class="navbar navbar-expand-lg-dark     navbar-custom" data-bs-theme="dark">
+        <a class="navbar-brand mb-0 h1"><img src="/static/photos/discipline.png" alt="Ontime.img" width="70" height="70" style="border: radius 5px;;">Ontime.com</a>
+        <ul class="nav justify-content-end">
+        <li class="nav-item" >
+            <a class="nav-link bg-light" href="/logout" style="margin:5px;color:black">LogOut</a>
+        </li>
+    </ul>
+    </nav>
+    <div class="row" style="margin-top: 25px;margin-left: 25px;">
+        <div class="col-lg-4">
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="inputEmail4">Organisation ID</label>
+                    <input type="text" class="form-control" id="inputEmail4" readonly value = "{{ user_info['organization_id']}}" style="width:100%;background: transparent; ">
+                </div>
+                <div class="form-group col">
+                    <label for="inputEmail4">Email ID</label>
+                    <input type="email" class="form-control" id="inputEmail4" readonly value = "{{ user_info['email_id']}}" style="width:100%;background: transparent;" placeholder="Email">
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-lg-4">
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="inputEmail4">Admin Name</label>
+                    <input type="text" class="form-control" id="inputEmail4" readonly value = "{{ user_info['admin_name']}}" style="width:100%;background: transparent;" placeholder="Name">
+                </div>
+                <div class="form-group col">
+                    <label for="inputEmail4">Phone Number</label>
+                    <input type="number" class="form-control" id="inputEmail4" readonly value = "{{ user_info['phone_no']}}" style="width:100%;background: transparent;" placeholder="+91">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row" style="margin-top: 25px;margin-left: 25px;">
+    <div style="margin-left: 40px;"><h3 class="display">Upload Attendance</h3>
+        
+        <div class="row">
+            <div class="col-lg-6">
+                <p class="display-10">To upload attendance record of another day and address other
+                    attendance related settings, click the button below.</p>
+            </div>
+        </div> 
+        <a class="dropdown-item bg-light" href="/orgas" style="background-color:#c8dcdd; width: 150px; border-radius: 5px;">Attendance Settings</a>
+    </div>
+    <br>
+    <div style="margin-left: 40px;"><h3 class="display">Members Overview</h3>
+        <a class="dropdown-item bg-light" href="/mem_ov" style="background-color:#c8dcdd; width: 150px; border-radius: 5px">Members Overview</a>
+    </div>
+    <div class="row">
+        <h2>Add Holidays</h2>
+        <p>Add days which are to be marked as holidays </p>
+        <div class="col-lg-6">
+            <form action="/applyh" method = "POST"  style="margin-left: 5px;">
+                <br>
+                <label for="from">from :</label>
+                <input type="date" id="from" name = "from">
+                <label for="to">to :</label>
+                <input type="date" id="to" name = "to">
+                <br></br>
+                <input type="submit" class="btn btn-dark btn-lg btn-block" value="Add"  style="color: white;height:40px;width:90px;margin-left:100px;"></br></br>
+            </form>
+    </div> 
+        <br>
+        <h2>Delete Holidays</h2>
+        <p>Delete unneccessary holidays </p> 
+        <div>
+            <form action="/approveh" method="POST">
+                <label for="month">Month:</label>
+                <select id="month" name="month">
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+                <label for="year">Year:</label>
+                <input type="number" id="year" name="year" min="1900" max="2100" value="{{ year }}">
+                <input type="submit" value="Submit">
+            </form>
+            <form method="POST" action="/adh">
+                {% for leave in leaves %}
+                    <div class="field">
+                        <p>from {{ leave['fr'] }} to {{ leave['to'] }}</p>
+                        <p >{{ leave['reason'] }}</p>
+                        {% if login == "org" %}
+                            <input type="submit" name="action" value="approve_{{ leave['id'] }}">Delete</button>
+                        {% endif %}
+                    </div>
+                    <br>
+                {% endfor %}
+            </form>
+</body>
+</html>
